@@ -1,0 +1,80 @@
+{
+ "S01": [
+  "Hi. In this video,\nwe're going to talk about",
+  "this section — the Setting Panel."
+ ],
+ "S02": [
+  "Simply put, this is where we control\nRiskPilot's behavior and settings.",
+  "If you think of the panel itself\nas the car's dashboard,",
+  "this part is the engine —\nand it holds a lot of settings."
+ ],
+ "S03": [
+  "I'm not going to rush through\nevery option one after another,",
+  "because there are a lot of settings;\nexplaining them all at once",
+  "would be more confusing and tiring\nthan useful.",
+  "So I've split this section up,",
+  "and we'll make a separate\nvideo for each part."
+ ],
+ "S04": [
+  "To give you the headlines:\nthe appearance settings,",
+  "and the panel size\nrelative to the chart and monitor."
+ ],
+ "S05a": [
+  "The On Chart section\nis very important — very important —",
+  "and it relates directly to Presets,\nour pre-configured settings.",
+  "And as you can see, in Manual\nwe can adjust settings directly."
+ ],
+ "S05b": [
+  "Here, On Chart is clearly connected\nto this part — Presets —",
+  "which is set up and saved once."
+ ],
+ "S06": [
+  "Here we have Guards — extremely\nuseful for prop-challenge accounts.",
+  "We can control our daily loss,\nthen set and lock our spread",
+  "at a specific level, and limit\nthe number of trades per day",
+  "to avoid overtrading."
+ ],
+ "S07": [
+  "We have ATM, which is very efficient\nand can implement an excellent system."
+ ],
+ "S08": [
+  "There's the ATR section, and so on."
+ ],
+ "S09": [
+  "There's the PRO section\nyou're looking at,",
+  "and the Journal section."
+ ],
+ "S10": [
+  "And the remaining items\nyou're seeing here —",
+  "each has its own video."
+ ],
+ "S11a": [
+  "Watching each one can be useful,\ndepending on your strategy.",
+  "You can implement these smart models\nand trade cleanly —",
+  "the trader simply\nconfigures everything once."
+ ],
+ "S11b": [
+  "Based on their own strategy\nand the plans they have in mind,",
+  "they set it up once\nand know these settings won't change."
+ ],
+ "S12": [
+  "For fast scalping entries, it's\nextremely fast and effective —",
+  "for scalpers and even fast scalpers —",
+  "since they can use the panel settings\nand enter through Manual Position.",
+  "It takes the guesswork away:\nhow much can I risk now,",
+  "and with what percentage\nor dollar amount have I entered?"
+ ],
+ "S13": [
+  "Our balance isn't always round,\nso we'd know exactly what size to enter",
+  "and where to exit. Often we have\nto sit down and calculate",
+  "what percentage we're risking,\nand how much we're up or in drawdown.",
+  "That's just a small part of what\nthis expert advisor can do."
+ ],
+ "S14": [
+  "It can be calculated once,\nsaved in the settings,",
+  "and then the trader can focus\non what matters, not such calculations."
+ ],
+ "S15": [
+  "Thanks for your time. Good luck."
+ ]
+}

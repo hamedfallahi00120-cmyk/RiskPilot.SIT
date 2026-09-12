@@ -1,0 +1,210 @@
+1
+00:00:01,360 --> 00:00:04,090
+Hi. In this video,
+we're going to talk about
+
+2
+00:00:04,090 --> 00:00:06,600
+this section — the Setting Panel.
+
+3
+00:00:13,260 --> 00:00:19,560
+Simply put, this is where we control
+RiskPilot's behavior and settings.
+
+4
+00:00:19,560 --> 00:00:24,920
+If you think of the panel itself
+as the car's dashboard,
+
+5
+00:00:24,920 --> 00:00:30,120
+this part is the engine —
+and it holds a lot of settings.
+
+6
+00:00:40,710 --> 00:00:45,070
+I'm not going to rush through
+every option one after another,
+
+7
+00:00:45,070 --> 00:00:49,390
+because there are a lot of settings;
+explaining them all at once
+
+8
+00:00:49,390 --> 00:00:52,960
+would be more confusing and tiring
+than useful.
+
+9
+00:00:52,960 --> 00:00:55,490
+So I've split this section up,
+
+10
+00:00:55,490 --> 00:00:59,190
+and we'll make a separate
+video for each part.
+
+11
+00:01:15,000 --> 00:01:19,710
+To give you the headlines:
+the appearance settings,
+
+12
+00:01:19,710 --> 00:01:24,890
+and the panel size
+relative to the chart and monitor.
+
+13
+00:01:31,810 --> 00:01:36,620
+The On Chart section
+is very important — very important —
+
+14
+00:01:36,620 --> 00:01:42,660
+and it relates directly to Presets,
+our pre-configured settings.
+
+15
+00:01:42,660 --> 00:01:48,240
+And as you can see, in Manual
+we can adjust settings directly.
+
+16
+00:01:58,360 --> 00:02:03,380
+Here, On Chart is clearly connected
+to this part — Presets —
+
+17
+00:02:03,380 --> 00:02:05,990
+which is set up and saved once.
+
+18
+00:02:12,040 --> 00:02:18,320
+Here we have Guards — extremely
+useful for prop-challenge accounts.
+
+19
+00:02:18,320 --> 00:02:24,140
+We can control our daily loss,
+then set and lock our spread
+
+20
+00:02:24,140 --> 00:02:28,490
+at a specific level, and limit
+the number of trades per day
+
+21
+00:02:28,490 --> 00:02:30,950
+to avoid overtrading.
+
+22
+00:02:47,000 --> 00:02:53,030
+We have ATM, which is very efficient
+and can implement an excellent system.
+
+23
+00:02:57,130 --> 00:02:59,670
+There's the ATR section, and so on.
+
+24
+00:03:06,500 --> 00:03:08,860
+There's the PRO section
+you're looking at,
+
+25
+00:03:08,860 --> 00:03:10,870
+and the Journal section.
+
+26
+00:03:20,520 --> 00:03:23,970
+And the remaining items
+you're seeing here —
+
+27
+00:03:23,970 --> 00:03:26,990
+each has its own video.
+
+28
+00:03:30,710 --> 00:03:35,240
+Watching each one can be useful,
+depending on your strategy.
+
+29
+00:03:35,240 --> 00:03:38,530
+You can implement these smart models
+and trade cleanly —
+
+30
+00:03:38,530 --> 00:03:42,420
+the trader simply
+configures everything once.
+
+31
+00:03:54,000 --> 00:03:58,070
+Based on their own strategy
+and the plans they have in mind,
+
+32
+00:03:58,070 --> 00:04:03,080
+they set it up once
+and know these settings won't change.
+
+33
+00:04:05,430 --> 00:04:08,780
+For fast scalping entries, it's
+extremely fast and effective —
+
+34
+00:04:08,780 --> 00:04:13,260
+for scalpers and even fast scalpers —
+
+35
+00:04:13,260 --> 00:04:18,620
+since they can use the panel settings
+and enter through Manual Position.
+
+36
+00:04:18,620 --> 00:04:22,780
+It takes the guesswork away:
+how much can I risk now,
+
+37
+00:04:22,780 --> 00:04:27,470
+and with what percentage
+or dollar amount have I entered?
+
+38
+00:04:33,210 --> 00:04:37,900
+Our balance isn't always round,
+so we'd know exactly what size to enter
+
+39
+00:04:37,900 --> 00:04:41,790
+and where to exit. Often we have
+to sit down and calculate
+
+40
+00:04:41,790 --> 00:04:45,440
+what percentage we're risking,
+and how much we're up or in drawdown.
+
+41
+00:04:45,440 --> 00:04:50,650
+That's just a small part of what
+this expert advisor can do.
+
+42
+00:04:54,740 --> 00:04:58,740
+It can be calculated once,
+saved in the settings,
+
+43
+00:04:58,740 --> 00:05:03,490
+and then the trader can focus
+on what matters, not such calculations.
+
+44
+00:05:20,430 --> 00:05:23,120
+Thanks for your time. Good luck.
