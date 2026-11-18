@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "riskpilot-core"
+version = "0.1.0"
+description = "Broker-agnostic position sizing and daily-risk guarding for trading accounts."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "RiskPilot maintainers" }]
+keywords = ["trading", "risk", "position-sizing", "forex", "futures"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff", "mypy"]
+
+[project.scripts]
+riskpilot = "riskpilot.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/hamedfallahi00120-cmyk/RiskPilot.SIT"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+riskpilot = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4", "RET", "ARG", "PTH", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+warn_unreachable = true
+show_error_codes = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["src/riskpilot"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+exclude_lines = ["if TYPE_CHECKING:", "pragma: no cover", "raise NotImplementedError"]
