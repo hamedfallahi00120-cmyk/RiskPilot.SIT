@@ -1,0 +1,10 @@
+default_risk_pct = "1.0"
+
+[guard]
+daily_loss_limit_pct = "2.0"
+warning_ratio = "0.7"
+trailing_drawdown = "3000.00"
+max_open_positions = 3
+max_trades_per_day = 10
+session_reset_time = "00:00"
+session_tz = "America/Chicago"
