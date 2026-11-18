@@ -154,3 +154,30 @@ spec of this size has holes, and silent guesses are worse than written ones.
 - **Choice:** keep them untouched. They are unrelated to the library but the spec
   does not authorise deleting the owner's media. Nothing in the build, tests or CI
   reads them. `ai-work/` is left as-is.
+
+## D17. H4 says `config` is pure, but C requires it to read a file.
+
+- **Spec conflict:** H4 lists `config` among the modules that must do "no file
+  I/O", yet C mandates `load_config(path)` and `load_instruments(path)`.
+- **Options:** (a) put the file reading in `cli.py` and have `config` accept an
+  already-parsed mapping; (b) keep `path`-taking loaders in `config` as C requires.
+- **Choice:** (b), because C explicitly specifies `load_config(path)` /
+  `load_instruments(path)` as the public API, and the README/CLI depend on it.
+  The purity spirit of H4 is preserved: `config` holds no module-level state,
+  prints nothing, reads no clock and does no I/O except the single `open` on the
+  caller-supplied path. `test_no_core_module_imports_io_or_printing` permits
+  `open` in `config` only and forbids printing anywhere outside `cli`.
+
+## D18. `config` imports `guard` and `instruments`.
+
+- **Spec:** H5 states the direction `cli -> {config, guard, sizing, instruments} ->
+  errors`, which some readers take to mean the four middle modules may import
+  **only** `errors`.
+- **Choice:** `config` additionally imports `guard` and `instruments`, because
+  `load_config` must construct a `GuardConfig` and `load_instruments` must
+  construct `InstrumentSpec`. The arrow is read as "these four depend on errors",
+  not "these four depend on nothing else". `guard`, `sizing` and `instruments`
+  import only `errors` (and private leaves), so no cycle is possible; the `ast`
+  test encodes a layer index that still forbids any core module from importing
+  `cli`.
+
