@@ -332,3 +332,13 @@ def test_validate_invalid_config_value(tmp_path: Path, capsys: pytest.CaptureFix
     code = main(["validate-config", str(bad)])
     assert code == EXIT_USAGE
     assert "error:" in capsys.readouterr().err
+
+
+def test_validate_directory_reports_oserror(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # Passing a directory where a file is expected surfaces an OSError, which the
+    # CLI reports as a usage error rather than a traceback.
+    code = main(["validate-config", str(tmp_path)])
+    assert code == EXIT_USAGE
+    assert "error:" in capsys.readouterr().err

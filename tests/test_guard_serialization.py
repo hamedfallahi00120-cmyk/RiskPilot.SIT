@@ -114,8 +114,8 @@ def test_from_dict_rejects_bad_field_types() -> None:
         DailyRiskGuard.from_dict(config, {**good, "net_qty": "nope"})
     with pytest.raises(ValidationError, match="trades_today"):
         DailyRiskGuard.from_dict(config, {**good, "trades_today": "x"})
-    with pytest.raises(ValidationError, match="locked_announced"):
-        DailyRiskGuard.from_dict(config, {**good, "locked_announced": 1})
+    with pytest.raises(ValidationError, match="trades_today"):
+        DailyRiskGuard.from_dict(config, {**good, "trades_today": True})
     with pytest.raises(ValidationError, match="session_start"):
         DailyRiskGuard.from_dict(config, {**good, "session_start": 123})
     with pytest.raises(ValidationError, match="baseline"):

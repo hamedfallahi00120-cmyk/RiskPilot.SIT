@@ -172,7 +172,6 @@ class _GuardData:
     equity: Decimal | None = None
     high_water: Decimal | None = None
     state: GuardState = GuardState.ACTIVE
-    locked_announced: bool = False
     trades_today: int = 0
     net_qty: dict[str, Decimal] = field(default_factory=dict)
 
@@ -229,7 +228,6 @@ class DailyRiskGuard:
         data.equity = None
         data.high_water = None
         data.state = GuardState.ACTIVE
-        data.locked_announced = False
         data.trades_today = 0
 
     def _limit(self) -> Decimal:
@@ -262,7 +260,6 @@ class DailyRiskGuard:
         data = self._data
         if data.state is not GuardState.LOCKED and self._lock_triggered():
             data.state = GuardState.LOCKED
-            data.locked_announced = True
             return Decision(DecisionKind.FLATTEN_ALL, Reason.LOCKED, data.state)
         if data.state is not GuardState.LOCKED:
             loss = self._loss()
@@ -335,7 +332,6 @@ class DailyRiskGuard:
             "equity": None if data.equity is None else str(data.equity),
             "high_water": None if data.high_water is None else str(data.high_water),
             "state": data.state.value,
-            "locked_announced": data.locked_announced,
             "trades_today": data.trades_today,
             "net_qty": {symbol: str(qty) for symbol, qty in data.net_qty.items()},
         }
@@ -364,13 +360,10 @@ class DailyRiskGuard:
         state_raw = data.get("state")
         net_raw = data.get("net_qty")
         trades_raw = data.get("trades_today")
-        announced_raw = data.get("locked_announced")
         if not isinstance(net_raw, dict):
             raise ValidationError("field 'net_qty' must be a mapping")
         if isinstance(trades_raw, bool) or not isinstance(trades_raw, int):
             raise ValidationError("field 'trades_today' must be an int")
-        if not isinstance(announced_raw, bool):
-            raise ValidationError("field 'locked_announced' must be a bool")
 
         guard._data = _GuardData(
             session_start=_dt("session_start"),
@@ -379,7 +372,6 @@ class DailyRiskGuard:
             equity=_dec("equity"),
             high_water=_dec("high_water"),
             state=GuardState(state_raw),
-            locked_announced=announced_raw,
             trades_today=trades_raw,
             net_qty={str(k): Decimal(str(v)) for k, v in net_raw.items()},
         )
