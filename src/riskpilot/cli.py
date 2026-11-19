@@ -31,6 +31,13 @@ _CSV_COLUMNS = ("ts", "type", "symbol", "qty", "equity", "risk_amount")
 _EVENT_TYPES = ("EQUITY", "ORDER", "FILL")
 
 
+def _money(value: Decimal) -> str:
+    """Render a money amount with exactly two decimals (display only, no rounding)."""
+    text = format(value, "f")
+    whole, _, fraction = text.partition(".")
+    return f"{whole}.{(fraction + '00')[:2]}"
+
+
 class UsageError(Exception):
     """Raised for user-facing usage problems detected after argparse."""
 
@@ -88,10 +95,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             return _run_size(args, sys.stdout)
         if args.command == "simulate":
             return _run_simulate(args, sys.stdout)
-        if args.command == "validate-config":
-            return _run_validate(args, sys.stdout)
-        msg = f"unknown command: {args.command}"
-        raise UsageError(msg)
+        return _run_validate(args, sys.stdout)
     except UsageError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return EXIT_ERROR
@@ -121,10 +125,10 @@ def _run_size(args: argparse.Namespace, out: TextIO) -> int:
     )
     payload: dict[str, Any] = {
         "symbol": spec.symbol,
-        "qty": str(result.qty),
-        "risk_budget": str(result.risk_budget),
-        "risk_per_unit": str(result.risk_per_unit),
-        "risk_actual": str(result.risk_actual),
+        "qty": format(result.qty, "f"),
+        "risk_budget": _money(result.risk_budget),
+        "risk_per_unit": _money(result.risk_per_unit),
+        "risk_actual": _money(result.risk_actual),
         "status": result.status.value,
     }
     if args.json:
@@ -221,6 +225,8 @@ def _read_events(path: Path) -> list[EquityUpdate | OrderRequest | Fill]:
     except FileNotFoundError as exc:
         msg = f"{path}: file not found"
         raise UsageError(msg) from exc
+    except IsADirectoryError as exc:
+        raise OSError(f"{path}: is a directory, expected a CSV file") from exc
     return events
 
 
@@ -256,7 +262,3 @@ def _run_simulate(args: argparse.Namespace, out: TextIO) -> int:
         output = f"Generated at {generated_at}\n" + json.dumps(payload, indent=2)
     print(output, file=out)
     return EXIT_FLATTEN if flatten else EXIT_OK
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

@@ -101,10 +101,8 @@ def _reset_time(data: dict[str, Any]) -> time:
     return time.fromisoformat(value)
 
 
-def _string(data: dict[str, Any], *, key: str, field: str, default: str | None) -> str:
+def _string(data: dict[str, Any], *, key: str, field: str, default: str) -> str:
     if key not in data or data[key] is None:
-        if default is None:
-            _fail(field, "missing required string key")
         return default
     value = data[key]
     if not isinstance(value, str) or not value:
@@ -215,10 +213,6 @@ def load_instruments(path: str | Path) -> dict[str, InstrumentSpec]:
             specs[symbol] = InstrumentSpec(symbol=symbol, **values)
         except RiskPilotError as exc:
             raise ConfigError(f"{field_base}: {exc}") from exc
-        except TypeError as exc:
-            raise ConfigError(
-                f"{field_base}: expected decimal strings for every field ({exc})"
-            ) from exc
     return specs
 
 
