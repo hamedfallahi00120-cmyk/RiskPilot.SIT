@@ -1,0 +1,14 @@
+# Guard configuration for the America/Chicago DST example.
+# Reset time 02:30 does not exist on 2026-03-08 (spring forward) and occurs
+# twice-worth of wall clock on 2026-11-01 (fall back), so this config exercises
+# both DST edge cases.
+
+default_risk_pct = "0.5"
+
+[guard]
+daily_loss_limit_pct = "2"
+warning_ratio = "0.6"
+max_open_positions = 2
+max_trades_per_day = 4
+session_reset_time = "02:30"
+session_tz = "America/Chicago"

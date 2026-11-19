@@ -1,0 +1,16 @@
+# riskpilot-core configuration example.
+# See docs/CONFIG.md for every key, its type, default and allowed range.
+#
+# Exactly one of guard.daily_loss_limit (absolute) and
+# guard.daily_loss_limit_pct (percent of session-start equity) must be set.
+
+default_risk_pct = "1"
+
+[guard]
+daily_loss_limit = "2000"
+warning_ratio = "0.7"
+trailing_drawdown = "2500"
+max_open_positions = 3
+max_trades_per_day = 6
+session_reset_time = "17:00"
+session_tz = "America/New_York"
