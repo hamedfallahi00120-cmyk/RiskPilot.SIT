@@ -1,0 +1,27 @@
+# Instrument definitions for riskpilot-core.
+# Every numeric value is a TOML string so it is parsed as an exact Decimal
+# (never as a binary float).
+#
+# tick_value is the account-currency value of one tick for ONE unit
+# (1 lot for forex, 1 contract for futures).
+
+[EURUSD]
+tick_size = "0.00001"
+tick_value = "1.00"
+min_qty = "0.01"
+qty_step = "0.01"
+max_qty = "100"
+
+[NQ]
+tick_size = "0.25"
+tick_value = "5.00"
+min_qty = "1"
+qty_step = "1"
+max_qty = "50"
+
+[MNQ]
+tick_size = "0.25"
+tick_value = "0.50"
+min_qty = "1"
+qty_step = "1"
+max_qty = "200"
