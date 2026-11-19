@@ -115,3 +115,15 @@ def test_guard_never_reads_the_clock() -> None:
             assert node.attr not in {"now", "utcnow", "today", "time"}, (
                 "guard must not read the clock"
             )
+
+
+def test_no_float_literals_in_the_core() -> None:
+    """Money/price/quantity maths must never use binary floating point."""
+    for path in sorted(SRC.glob("*.py")):
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        floats = [
+            node.value
+            for node in ast.walk(tree)
+            if isinstance(node, ast.Constant) and isinstance(node.value, float)
+        ]
+        assert not floats, f"{path.name} contains float literals: {floats}"

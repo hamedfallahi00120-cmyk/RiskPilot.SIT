@@ -39,7 +39,7 @@ eurusd = InstrumentSpec(
 )
 result = size_position(
     equity=Decimal("10000"),
-    risk_pct=Decimal("1"),          # 1 %
+    risk_pct=Decimal("1"),  # 1 %
     entry=Decimal("1.10000"),
     stop=Decimal("1.09800"),
     spec=eurusd,
