@@ -79,7 +79,8 @@ events (proved by a test and by a seeded property test).
 * Seeded property tests (`random.Random(fixed_seed)`) for the invariants that
   matter: `risk_actual <= risk_budget`, quantity is a multiple of `qty_step`,
   the next step would exceed the budget, and guard round-trips are lossless.
-* Meta tests that enforce *process* requirements: import direction, single
-  source of truth for the version, docs/config parity, README examples executed
-  byte-for-byte, and repository hygiene (no leftover work markers, and no
-  suppression comments beyond the documented limit).
+* Meta tests that enforce *process* requirements: import direction, the absence
+  of float literals in `src/`, single source of truth for the version,
+  docs/config parity, README examples executed byte-for-byte, and repository
+  hygiene (no leftover work markers, no committed artifacts, no suppression
+  comments at all, no file over 400 lines).

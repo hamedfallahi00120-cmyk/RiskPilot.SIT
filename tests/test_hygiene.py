@@ -106,10 +106,13 @@ def test_no_commented_out_code(path: Path) -> None:
             pytest.fail(f"{path}:{number} looks like commented-out code: {stripped}")
 
 
-@pytest.mark.parametrize("path", owned_text_files(), ids=lambda p: p.name)
-def test_no_file_is_longer_than_400_lines(path: Path) -> None:
-    count = len(path.read_text(encoding="utf-8").splitlines())
-    assert count <= MAX_FILE_LINES, f"{path} has {count} lines"
+def test_no_file_is_longer_than_400_lines() -> None:
+    long_files = {
+        path.relative_to(ROOT).as_posix(): len(path.read_text(encoding="utf-8").splitlines())
+        for path in owned_text_files()
+        if len(path.read_text(encoding="utf-8").splitlines()) > MAX_FILE_LINES
+    }
+    assert not long_files, f"files over {MAX_FILE_LINES} lines: {long_files}"
 
 
 def test_suppression_budget() -> None:

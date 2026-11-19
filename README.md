@@ -12,6 +12,11 @@ Broker-agnostic **position sizing** and **daily risk guarding** for trading acco
 * Runtime dependencies: **none** (standard library only).
 * The core is pure: no file I/O, no clock reads, no printing, no global state.
 
+Modules: `errors` (exception hierarchy), `instruments` (`InstrumentSpec`), `sizing`
+(`size_position`, `SizeResult`, `SizeStatus`), `guard` (`DailyRiskGuard`,
+`GuardConfig`, events, `Decision`), `config` (`load_config`, `load_instruments`,
+`AppConfig`) and `cli` (`main`).
+
 ## Install
 
 ```console
@@ -118,8 +123,9 @@ $ riskpilot simulate --config examples/config.toml --events examples/day_breach.
 
 The simulate output always starts with a `Generated at <UTC timestamp>` header,
 followed by one line per event and a summary. Its exit code is `3` when the day
-ended in a `FLATTEN_ALL` decision. `examples/dst_day.csv` uses a
-`02:30 America/Chicago` reset to exercise both DST transitions.
+ended in a `FLATTEN_ALL` decision. `examples/dst_day.csv` with
+`examples/config_chicago.toml` uses a `02:30 America/Chicago` reset to exercise
+both DST transitions.
 
 ### Exit codes
 

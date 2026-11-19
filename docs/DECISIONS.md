@@ -235,10 +235,11 @@ the quality gates. This is stated explicitly in the pull request.
 
 ## 28. `#[type: ignore]` / `# noqa` budget
 
-**Decision.** The budget is three, each with a written justification. The final
-count is zero in `src/` and a small number in `tests/` (where deliberate type
-violations are the point of the test); a meta test fails the build above the
-budget. Tests may not be weakened to satisfy a linter.
+**Decision.** The budget is three, each with a written justification. The actual
+count is **zero**: the tests that exercise wrong types go through a `cast`ed
+callable instead of suppressing the checker, so no suppression comment exists in
+`src/` or `tests/`. A meta test enforces both the budget and the justification
+format. Tests are never weakened to satisfy a linter.
 
 ## 29. Timezone database availability
 
@@ -259,3 +260,24 @@ is used by the DST tests, and GitHub's `ubuntu-latest` images ship the IANA data
 (`Decimal | int | str`). The strictness is enforced *at runtime* by `to_decimal`,
 which rejects `float` and `bool`, so a static type checker and the runtime agree
 and no `Any` leaks into the public API.
+
+## 31. Files that are not part of the package
+
+**Ambiguity.** "The final tree has no leftover work markers, no debug prints, LF
+endings and a final newline in every file" — does that include the owner's
+pre-existing media and the `.git` internals?
+
+**Decision.** The hygiene tests cover the files this change owns: `src/`,
+`tests/`, `docs/`, `examples/`, `pyproject.toml`, `README.md`, `CHANGELOG.md`,
+`.gitignore`, `.editorconfig` and `.github/`. Binary media (two `.mp4`, one `.zip`,
+one `.srt`) and the empty `ai-work/input/README.md` are left untouched and
+unchecked; reformatting the owner's media is out of scope. `python -m build`
+artefacts, caches and the local `.coverage` file are git-ignored.
+
+## 32. One command per README example
+
+**Decision.** Each `console` block in the README holds exactly one `$ riskpilot`
+command on a single line, so the byte-for-byte test can execute it without shell
+line-continuation logic. Long commands are therefore long lines in the README
+(Markdown renders them fine); `ruff format` is allowed to reformat the Python
+code blocks.
